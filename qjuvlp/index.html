@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qjuvlp</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      height: 100vh;
+    }
+
+    .intro {
+      padding: 2rem;
+      max-width: 300px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #2a4dff; /* tumblr-ish blue */
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <p><strong>qjuvlp</strong><br><em>(b. 2005 )</em></p>
+    
+    <p id="date"></p>
+    <p>Time: <span id="time24" class="highlight"></span></p>
+    
+    <p>San Francisco, CA (US) &nbsp;&nbsp;</p>
+    <p>Coords: 37°45'59.0"N 122°29'10.2"W</p>
+    
+    <p> photos/thoughts <br></p>
+  </div>
+
+   <script>
+    function updateDateTime() {
+      const now = new Date();
+
+      // date
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById("date").textContent = now.toLocaleDateString(undefined, options);
+
+      // 24-hour format with seconds
+      document.getElementById("time24").textContent = now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  </script>
+</body>
+</html>
