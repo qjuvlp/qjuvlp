@@ -1,0 +1,207 @@
+/* style.css */                 
+
+/* ---- Entry Home Page (index.html) ---- 
+body.entry-home {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  background: url('images/alex.gif') no-repeat center center;
+  background-size: cover;
+}
+
+body.entry-home h1 {
+  font-size: 2.5rem;
+  animation: fadeIn 2s ease-in-out;
+  text-shadow: 2px 2px 5px #000;
+}
+
+body.entry-home button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body.entry-home button:hover {
+  background: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Main Home Page (main.html) ---- */
+
+body.main-home {
+  margin: 0;
+  font-family: "Times New Roman", serif;
+  background-color: #fff;
+  color: #000;
+  height: 100vh;
+  padding-bottom: 3rem; /* Prevent content from being hidden behind footer */
+}
+
+.hotbar {
+  width: 100vw;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-sizing: border-box;
+}
+.hotbar a {
+  text-decoration: none;
+  color: #2a4dff;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.hotbar a:hover {
+  color: #000;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.posts {
+  flex: 1 1 0;
+  padding: 2.5rem 2rem; /* increased padding for more space */
+  min-width: 0;
+  box-sizing: border-box;
+  max-width: 900px; /* increased max-width for wider posts */
+  width: 100%;
+  margin: 0; /* remove auto-centering */
+}
+
+/* Make images inside posts responsive */
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.intro {
+  max-width: 340px; /* slightly wider */
+  padding: 2rem;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-left: 2rem; /* add space between posts and bio */
+  box-sizing: border-box;
+}
+
+.highlight {
+  color: #2a4dff;
+}
+
+.post {
+  margin-bottom: 1.5rem;
+}
+.post h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.post p {
+  margin: 0 0 0.5rem 0;
+}
+.post span {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Controls the date and time row in each post */
+.post-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 1rem 0;
+}
+
+.footerbar {
+  width: 100vw;
+  background: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  font-family: "Times New Roman", serif;
+  color: #888;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments for tablets and below */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .intro {
+    max-width: 100%;
+    margin-left: 0;
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+  }
+  .posts {
+    max-width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+  .hotbar, .footerbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+  .posts, .intro {
+    padding: 1rem;
+  }
+  .post h3 {
+    font-size: 1rem;
+  }
+}
+
+.posts img, .post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
