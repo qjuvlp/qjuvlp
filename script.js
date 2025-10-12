@@ -32,7 +32,7 @@ const posts = [
   },
   {
     title: "videoooooooooooo",
-    content: `Finally figured out how to add video, so hopefully it works out and doesn't break anything, also sorry for leaving for a while, been procrastinatiing on this site for a while now since im still trying to figure out what I'm going to do with it, And if you're checking it out for the first time, thank you :)`,
+    content: `Finally figured out how to add video, so hopefully it works out and doesn't break anything, also sorry for leaving for a while, been procrastinatiing on this site for a while now since im still trying to figure out what I'm going to do with it, And if you're checking it out for the first time, thank you :D`,
     media: [
       { type: 'video', src: 'muni.mp4', alt: 'Muni Station' }
     ],
@@ -157,3 +157,4 @@ db.collection("recommendations")
       });
     });
   })();
+
