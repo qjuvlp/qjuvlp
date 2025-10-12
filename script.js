@@ -114,15 +114,7 @@ setInterval(updateDateTime, 1000);
       setBgOnly(!document.body.classList.contains('bg-only'));
     }
   });
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-  apiKey: "AIzaSyAfCgZm-oA67DWRWp-9iMYkj0M5ai5gJqs",
-  authDomain: "chatbox-9bc21.firebaseapp.com",
-  projectId: "chatbox-9bc21",
-  storageBucket: "chatbox-9bc21.firebasestorage.app",
-  messagingSenderId: "306173101129",
-  appId: "1:306173101129:web:b9c234cdd991d3ca11ab98"
-};
+
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -165,3 +157,4 @@ db.collection("recommendations")
       });
     });
   })();
+
