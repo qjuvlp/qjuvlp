@@ -49,24 +49,26 @@ body.entry-home button:hover {
 body.main-home {
   margin: 0;
   font-family: "Times New Roman", serif;
-  background-color: #fff;
+  background-color: transparent;
   color: #000;
   height: 100vh;
   padding-bottom: 3rem; /* Prevent content from being hidden behind footer */
 }
 
 .hotbar {
-  width: 100vw;
-  background: #f5f5f5;
-  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 0.75rem 2rem;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  box-sizing: border-box;
   position: sticky;
   top: 0;
   z-index: 10;
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
 }
 .hotbar a {
   text-decoration: none;
@@ -79,24 +81,62 @@ body.main-home {
   color: #000;
 }
 
+/* Utility: visually hide text but keep it available to screen readers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* nowrap helps prevent line breaks from expanding the element */
+  border: 0; padding: 0; margin: -1px;
+}
+
 .container {
   display: flex;
-  width: 100vw;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-.posts {
-  flex: 1 1 0;
-  padding: 2.5rem 2rem; /* increased padding for more space */
-  min-width: 0;
-  box-sizing: border-box;
-  max-width: 900px; /* increased max-width for wider posts */
   width: 100%;
-  margin: 0; /* remove auto-centering */
+  min-height: calc(100vh - 4rem);
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1rem 2rem;   /* page side padding */
+  margin: 0;            /* ensure no centering */
+  max-width: none;      /* override any earlier max-width:center rules */
 }
 
-/* Make images inside posts responsive */
+/* posts (left column) */
+.posts {
+  /* Make posts narrower while keeping intro fixed to the right.
+     Use a preferred flex-basis and limit max-width so the right column
+     stays visible. This keeps layout stable on wide screens. */
+    /* Prefer a fixed pixel width so the posts panel doesn't keep growing when zoomed out.
+       Allow it to shrink on smaller screens (flex-shrink:1) so responsive rules can override it. */
+    flex: 0 1 720px;        /* no grow, allow shrink, preferred width 720px */
+    width: 720px;          /* preferred fixed width on wide screens */
+    padding: 1.5rem;
+    box-sizing: border-box;
+    max-width: calc(100% - 360px); /* reserve space for .intro + gap */
+}
+
+/* tighten individual post cards */
+.post {
+  padding: 0.75rem;         /* less internal padding */
+  margin-bottom: 0.75rem;   /* reduce vertical spacing */
+  border-radius: 8px;
+}
+
+/* intro (right column) */
+.intro {
+  width: 320px;            /* fixed-ish width so it stays on the right */
+  min-width: 240px;         /* avoid collapsing too small on narrow screens */
+  max-width: 36ch;        /* prevents overflowing text */
+  padding: 1.75rem;
+  box-sizing: border-box;
+  align-self: flex-start;
+  margin-left: auto;     /* <-- pushes it to the far right */
+  margin-right: 0;
+}
+
+/* keep images responsive inside posts */
 .post img {
   max-width: 100%;
   height: auto;
@@ -104,13 +144,61 @@ body.main-home {
   margin: 1rem 0 0.5rem 0;
 }
 
-.intro {
-  max-width: 340px; /* slightly wider */
-  padding: 2rem;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-left: 2rem; /* add space between posts and bio */
-  box-sizing: border-box;
+/* Separator and socials block under intro */
+.intro-sep {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 1.25rem 0;
+}
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  align-items: flex-start; /* ensure links align to the left edge */
+}
+.social-link {
+  color: #2a4dff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.social-link:hover {
+  text-decoration: underline;
+}
+
+/* Make each social link a block so they align and are easy to target */
+.social-link {
+  display: block;
+  padding: 0; /* remove any accidental padding */
+}
+
+.socials-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.socials-header {
+  font-size: 18px;
+  color: #111;
+  text-transform: none;
+  margin-bottom: 0.75rem;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  letter-spacing: 0;
+}
+
+/* Intro title (site name) */
+.intro-title {
+  font-size: 20px;
+  margin: 0 0 0.25rem 0;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  color: #111;
+}
+.intro-birthyear {
+  margin: 0 0 0.75rem 0;
+  color: #444;
+  font-size: 13px;
 }
 
 .highlight {
@@ -119,6 +207,19 @@ body.main-home {
 
 .post {
   margin-bottom: 1.5rem;
+}
+.post-media {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.post-media img,
+.post-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
 .post h3 {
   margin: 0 0 0.5rem 0;
@@ -150,37 +251,116 @@ hr {
 }
 
 .footerbar {
-  width: 100vw;
-  background: #f5f5f5;
-  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  max-width: none;
+  left: 0;
+  transform: none;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
   padding: 0.75rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
   box-sizing: border-box;
   font-family: "Times New Roman", serif;
   color: #888;
   font-size: 1rem;
 }
 
+/* translucent, readable containers */
+.hotbar,
+.footerbar {
+  background: rgba(245,245,245,0.86); /* light gray, slightly translucent */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* posts panel: subtle translucent card so background video shows but text stays readable */
+.posts {
+  background: rgba(250,250,250,0.78);
+  
+  padding: 2rem; /* keeps existing spacing */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: background-color 200ms ease;
+}
+
+/* each post gets a slightly lighter card for separation */
+.post {
+  background: rgba(255,255,255,0.65);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* intro (right column) card */
+.intro {
+  background: rgba(250,250,250,0.86);
+  
+  padding: 1.75rem; /* keep existing padding */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* reduce translucency / effects on small screens and for prefers-reduced-motion */
+@media (max-width: 600px), (prefers-reduced-motion: reduce) {
+  .hotbar,
+  .footerbar,
+  .posts,
+  .intro,
+  .post {
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+}
+
+/* Background video - full-bleed and behind content */
+.bg-video {
+  position: fixed;
+  inset: 0;                /* shorthand for top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* crop to fill */
+  z-index: -1;             /* place behind page content */
+  pointer-events: none;    /* clicks pass through */
+  filter: none;            /* optional: add blur/brightness if desired */
+}
+
+/* Hide video on small screens or when user prefers reduced motion */
+@media (max-width: 600px), (prefers-reduced-motion: reduce) {
+  .bg-video { display: none; }
+  /* fallback background image using the poster */
+  body.main-home {
+    background-image: url('poster.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 /* Responsive adjustments for tablets and below */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
+    padding: 1rem;
   }
   .intro {
+    width: 100%;
     max-width: 100%;
     margin-left: 0;
-    border-left: none;
     border-top: 1px solid #e0e0e0;
   }
   .posts {
+    /* Override the desktop fixed width so posts go full-width on stacked layout */
+    flex: 1 1 auto;
+    width: 100%;
     max-width: 100%;
     padding: 1rem;
+  }
+  .post-media {
+    grid-template-columns: 1fr; /* stack media on smaller screens */
   }
 }
 
@@ -204,4 +384,39 @@ hr {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* Toggle button (always visible) - controls background-only mode */
+.bg-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;                 /* above video and UI */
+  background: rgba(255,255,255,0.85);
+  color: #111;
+  border: 1px solid #ddd;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* Visible focused state for accessibility */
+.bg-toggle:focus {
+  outline: 3px solid rgba(42,77,255,0.25);
+  outline-offset: 2px;
+}
+
+/* Background-only mode: hide UI containers but keep video and toggle button */
+body.bg-only .hotbar,
+body.bg-only .container,
+body.bg-only .footerbar {
+  display: none !important;
+}
+
+/* Optional: make body background fully transparent so video is visible */
+body.bg-only {
+  background: transparent !important;
 }
