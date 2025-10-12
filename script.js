@@ -32,7 +32,7 @@ const posts = [
   },
   {
     title: "videoooooooooooo",
-    content: `Finally figured out how to add video, so hopefully it works out and doesn't break anything, also sorry for leaving for a while, been procrastinatiing on this site for a while now since im still trying to figure out what I'm going to do with it, And if you're checking it out for the first time, thank you :D`,
+    content: `Finally figured out how to add video, so hopefully it works out and doesn't break anything, also sorry for leaving for a while, been procrastinatiing on this site for a while now since im still trying to figure out what I'm going to do with it, And if you're checking it out for the first time, thank you :)`,
     media: [
       { type: 'video', src: 'muni.mp4', alt: 'Muni Station' }
     ],
@@ -114,7 +114,15 @@ setInterval(updateDateTime, 1000);
       setBgOnly(!document.body.classList.contains('bg-only'));
     }
   });
-
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyAfCgZm-oA67DWRWp-9iMYkj0M5ai5gJqs",
+  authDomain: "chatbox-9bc21.firebaseapp.com",
+  projectId: "chatbox-9bc21",
+  storageBucket: "chatbox-9bc21.firebasestorage.app",
+  messagingSenderId: "306173101129",
+  appId: "1:306173101129:web:b9c234cdd991d3ca11ab98"
+};
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -134,7 +142,7 @@ document.getElementById("recommendForm").addEventListener("submit", async (e) =>
     timestamp: new Date()
   });
 
-  alert("Thanks for your recommendation");
+  alert("Thanks for your recommendation!");
   e.target.reset();
 });
 
@@ -157,4 +165,3 @@ db.collection("recommendations")
       });
     });
   })();
-
