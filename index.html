@@ -3,31 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="hi" content="qjuvlp — photos and thoughts">
   <title>qjuvlp</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="main-home">
-  <nav class="hotbar">
-    <a href="srrydoesntwork">Home</a>
-    <a href="srrydoesntwork">Posts</a>
-    <a href="srrydoesntwork">Messages</a>
-    <a href="srrydoesntwork">About</a>
+  <video id="bg-video" class="bg-video" autoplay muted loop playsinline poster="poster.jpg" aria-hidden="true">
+    <source src="testing for trailer.mp4" type="video/mp4">
+    <source src="testing for trailer.mp4" type="video/webm">
+  </video>
+
+  <!-- Toggle button: stays visible even when other UI is hidden -->
+  <button id="bg-toggle" class="bg-toggle" aria-pressed="false" title="Toggle background-only view">
+    Show background only
+  </button>
+
+  <nav class="hotbar" aria-label="Main navigation">
+    <a href="srrydoesntwork" aria-label="Home"><span class="visually-hidden">Home</span></a>
+    <a href="srrydoesntwork" aria-label="Posts"><span class="visually-hidden">Posts</span></a>
+    <a href="srrydoesntwork" aria-label="Messages"><span class="visually-hidden">Messages</span></a>
+    <a href="srrydoesntwork" aria-label="About"><span class="visually-hidden">About</span></a>
   </nav>
 
   <div class="container">
-    <div class="posts" id="posts"></div>
-    <div class="intro">
-      <p><strong>qjuvlp</strong><br><em>(b. 2005 )</em></p>
+    <!-- Left: posts -->
+    <main class="posts" id="posts" aria-live="polite"></main>
+
+    <!-- Right: intro (bio, date, socials) -->
+    <aside class="intro" aria-label="About qjuvlp">
+      <h2 class="intro-title">qjuvlp</h2>
+      <p class="intro-birthyear"><em>(b. 2005)</em></p>
       <p id="date"></p>
       <p>Time: <span id="time24" class="highlight"></span></p>
-      <p>San Francisco, CA (US) &nbsp;&nbsp;</p>
+      <p>San Francisco, CA (US)</p>
       <p>37°45'59.0"N 122°29'10.2"W</p>
-      <p> photos/thoughts <br></p>
-    </div>
+      <p>photos/thoughts</p>
+      <hr class="intro-sep">
+      <div class="music-box">
+    <h4>Recommend a Song - or say hi</h4>
+    <form id="recommendForm">
+    <input type="text" id="songName" placeholder="Song name" required>
+    <input type="text" id="artistName" placeholder="Artist name" required>
+    <textarea id="message" placeholder="" required></textarea>
+    <button type="submit">Send</button>
+    </form>
+
+    <h4>Responses</h4>
+    <div id="list"></div>
+</div>
+
+      <div class="socials-wrapper">
+        <div class="socials-header">Socials</div>
+        <div class="socials" aria-label="Social links">
+          <a href="https://instagram.com/jewls_oo" class="social-link" aria-label="Instagram">Instagram</a>
+          <a href="https://open.spotify.com/user/8wk74nb5wujmxxus3dr49bgx1?si=d25d32009fe14f68" class="social-link" aria-label="Spotify">Spotify</a>
+          <a href="https://www.tiktok.com/@wld_j" class="social-link" aria-label="TikTok">TikTok</a>
+          <a href="https://github.com/qjuvlp" class="social-link" aria-label="GitHub">GitHub</a>
+          <a href="https://www.last.fm/user/oujsai" class="social-link" aria-label="Last.fm">Last.FM</a>
+        </div>
+      </div>
+      
+    </aside>
   </div>
+
   <footer class="footerbar">
     <span>qjuvlp</span>
   </footer>
-  <script src="script.js"></script>
+
+  <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+<!-- Your custom script -->
+<script src="script.js"></script>
+
 </body>
 </html>
