@@ -329,8 +329,9 @@ hr {
   filter: none;            /* optional: add blur/brightness if desired */
 }
 
-/* Hide video on small screens or when user prefers reduced motion */
-@media (max-width: 600px), (prefers-reduced-motion: reduce) {
+/* Hide video only when the user prefers reduced motion; keep it visible on small screens.
+   Note: mobile browsers may still block autoplay unless video is muted and playsinline (your HTML already sets those). */
+@media (prefers-reduced-motion: reduce) {
   .bg-video { display: none; }
   /* fallback background image using the poster */
   body.main-home {
@@ -397,10 +398,10 @@ hr {
   border: 1px solid #ddd;
   padding: 0.45rem 0.7rem;
   font-size: 0.9rem;
-  border-radius: 6px;
+  border-radius: 1px;
   cursor: pointer;
   backdrop-filter: blur(4px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 1px rgba(0,0,0,0.12);
 }
 
 /* Visible focused state for accessibility */
