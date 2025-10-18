@@ -39,7 +39,13 @@ const posts = [
     date: "October 11, 2025",
     time: "18:05:50"
   },
-  /*{
+  {
+    title: "",
+    content: "Im fucking jealous of you if you're going to see kimj later 2nite in sf DX, still trying to bring myself to opening vs studio to code bruuuuuuuuu",
+    date: "10 17, 2025",
+    time: "19:41:30"
+  }
+ /*{
     title: "Empty",
     content: "Empty",
     date: "Empty 12, 2025",
@@ -114,47 +120,4 @@ setInterval(updateDateTime, 1000);
       setBgOnly(!document.body.classList.contains('bg-only'));
     }
   });
-
-  // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-// Handle form submission
-document.getElementById("recommendForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const songName = document.getElementById("songName").value;
-  const artistName = document.getElementById("artistName").value;
-  const message = document.getElementById("message").value;
-
-  await db.collection("recommendations").add({
-    songName,
-    artistName,
-    message,
-    approved: false,
-    timestamp: new Date()
-  });
-
-  alert("Thanks for your recommendation!");
-  e.target.reset();
-});
-
-// Load only approved recommendations
-db.collection("recommendations")
-  .where("approved", "==", true)
-  .orderBy("timestamp", "desc")
-  .onSnapshot(snapshot => {
-    const list = document.getElementById("list");
-    list.innerHTML = "";
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const div = document.createElement("div");
-      div.className = "recommend";
-      div.innerHTML = `
-        <strong>${data.songName}</strong> – ${data.artistName}<br>
-        <span>${data.message}</span>
-      `;
-      list.appendChild(div);
-      });
-    });
   })();
-
