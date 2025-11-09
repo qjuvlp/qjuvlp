@@ -42,9 +42,15 @@ const posts = [
   {
     title: "",
     content: "Im fucking jealous of you if you're going to see kimj later 2nite in sf DX, still trying to bring myself to opening vs studio to code bruuuuuuuuu",
-    date: "10 17, 2025",
+    date: "October 17, 2025",
     time: "19:41:30"
-  }
+  },
+  {
+    title: "yipeee",
+    content: "Had so much fun today, met these two awesome people at the Bar Italia's concert here in San Francisco, AND VOYEUR?!?!?! LIKE LOL TWO STONES WITH ONE BIRD. Especially being at barricade, made my experience so much bette than I could have imagined. My only regret is that I didn't speak up to the band so that I could ask for a photo xd. Final thing, after the concert I met up with my parents and they ended up sneaking me into a club for the first time, lets just say I'll be sticking to concerts.",
+    date: "November 9, 2025",
+    time: "03:56:22"
+  },
  /*{
     title: "Empty",
     content: "Empty",
@@ -121,3 +127,4 @@ setInterval(updateDateTime, 1000);
     }
   });
   })();
+
