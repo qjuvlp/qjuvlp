@@ -47,7 +47,7 @@ const posts = [
   },
   {
     title: "yipeee",
-    content: "Had so much fun today, met these two awesome people at the Bar Italia's concert here in San Francisco, AND VOYEUR?!?!?! LIKE LOL TWO STONES WITH ONE BIRD. Especially being at barricade, made my experience so much better than I could have ever imagined. My only regret is that I didn't speak up to the band so that I could ask for a photo xd. Final thing, after the concert I met up with my parents and they ended up sneaking me into a club for the first time, lets just say I'll be sticking to concerts.",
+    content: "Had so much fun today, met these two awesome people at the Bar Italia's concert here in San Francisco, AND VOYEUR?!?!?! LIKE LOL TWO BIRDS WITH ONE STONE. Especially being at barricade, made my experience so much better than I could have ever imagined. My only regret is that I didn't speak up to the band so that I could ask for a photo xd. Final thing, after the concert I met up with my parents and they ended up sneaking me into a club for the first time, lets just say I'll be sticking to concerts.",
     date: "November 9, 2025",
     time: "03:56:22"
   },
@@ -127,5 +127,6 @@ setInterval(updateDateTime, 1000);
     }
   });
   })();
+
 
 
